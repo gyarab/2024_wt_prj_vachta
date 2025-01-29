@@ -11,3 +11,4 @@
 ## Wireframe
 ![alt text](IMG_1845.jpg)
 ## DB schéma
+![alt text](IMG_1947.jpg)
