@@ -5,7 +5,7 @@ class ObuvAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "year","produkt"]
     
 class ProduktAdmin(admin.ModelAdmin):
-    list_display = ["id", "name", "year","produkt"]
+    list_display = ["id", "name", "description"]
 
 # Register your models here.
 admin.site.register(Model, ObuvAdmin)

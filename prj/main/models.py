@@ -10,8 +10,6 @@ class Model(models.Model):
 
 class Produkt(models.Model):
     name = models.CharField(max_length=300)
-    year = models.IntegerField(blank=True, null=True)
-    birth_year = models.IntegerField(blank=True, default="")
     description = models.TextField(blank=True, default="")
     
     def __str__(self):
