@@ -1,2 +1,3 @@
-django
+django>=5
 httpx
+pyaml
