@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import Model, Produkt
+from .models import VKosiku, Produkt
 
-class ObuvAdmin(admin.ModelAdmin):
-    list_display = ["id", "name", "year","produkt"]
+class ObjednavkaAdmin(admin.ModelAdmin):
+    list_display = ["id", "jmeno", "rok","produkt"]
     
 class ProduktAdmin(admin.ModelAdmin):
-    list_display = ["id", "name", "description"]
+    list_display = ["id", "jmeno", "obrazek", "cena", "barva", "velikost", "recenze"]
 
 # Register your models here.
-admin.site.register(Model, ObuvAdmin)
+admin.site.register(VKosiku, ObjednavkaAdmin)
 admin.site.register(Produkt, ProduktAdmin)
