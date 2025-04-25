@@ -6,7 +6,7 @@ class VKosiku(models.Model):
     produkt = models.ForeignKey("Produkt", on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
-        return f"VKosiku <{self.id}> {self.name}"
+        return f"VKosiku <{self.id}> {self.jmeno} {self.rok} {self.popis} {self.produkt}"
 
 class Produkt(models.Model):
     jmeno = models.CharField(max_length=300)
@@ -18,4 +18,4 @@ class Produkt(models.Model):
     recenze = models.TextField(blank=True, default="")
 
     def __str__(self):
-        return f"Produkt <{self.id}> {self.name}"
+        return f"Produkt <{self.id}> {self.jmeno} {self.popis} {self.obrazek} {self.cena} {self.barva} {self.velikost} {self.recenze}"

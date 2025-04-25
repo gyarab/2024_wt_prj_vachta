@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from main.models import Produkt
 
-# Create your views here.
+def get_homepage(request):
+    context = {
+        "svatek": "Libor",
+        "jmeno": Produkt.objects.all()
+     }
+
+    return render(request,"main/base.html", context)
