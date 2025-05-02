@@ -1,0 +1,10 @@
+- model: main.produkt
+  pk: 1
+  fields:
+    jmeno: Nike boty
+    popis: ''
+    obrazek: ''
+    cena: '0.02'
+    barva: ''
+    velikost: ''
+    recenze: ''
