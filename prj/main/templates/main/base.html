@@ -3,53 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light px-2">
-      <a class="navbar-brand" href="#">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse p-2" id="navbarNav">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./">Home</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="./one">Produkty</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="./two">Objednávky</a>
-              </li>
-          </ul>
-          <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-light" type="submit">Search</button>
-          </form>
-      </div>
-  </nav>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-            {% block content %}
-            <div style="text-align: center;">
-            <div class="card text-bg-dark">
-              <div class="card-img-overlay">
-                <h1 class="card-title">Vítejte na nejlepší stránce sportovní obuvy!</h1>
-                <p class="card-text">Vaše pohodlí při sportu si bereme na starost.</p>
-                <p class="card-title">👟</p>
-              <img src="https://st2.depositphotos.com/1866209/6787/v/450/depositphotos_67871971-stock-illustration-sport-shoes-sign-with-color.jpg" class="card-img" alt="...">
+    <title>{% block title %}HOME{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">home</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'produkty' %}">Produkty</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'obednavky' %}">Obědnávky</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="{% url 'vkosiku' %}" tabindex="-1" aria-disabled="true">V kosiku</a>
+                  </li>
+                </ul>
               </div>
+
             </div>
+        </nav>
+
+        {% block content %}
+        <div style="text-align: center;">
+          <div class="card text-bg-dark">
+            <div class="card-img-overlay">
+              <h1 class="card-title">Vítejte na nejlepší stránce sportovní obuvy!</h1>
+              <p class="card-text">Vaše pohodlí při sportu si bereme na starost.</p>
+              <p class="card-title">👟</p>
+           </div>
           </div>
-            {% endblock  %}
-        </div> 
-    </body>
-<html>
+        </div>
+        {% endblock %}
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+</body>
+</html>

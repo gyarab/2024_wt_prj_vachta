@@ -1,4 +1,5 @@
 django>=5
 httpx
-pyaml
+pyyaml
 Pillow
+faker

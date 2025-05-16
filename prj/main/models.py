@@ -9,7 +9,7 @@ class VKosiku(models.Model):
     )
 
     def __str__(self):
-        return f"VKosiku <{self.id}> {self.jmeno} {self.rok} {self.popis} {self.produkt}"
+        return f"VKosiku {self.jmeno} {self.rok} {self.popis} {self.produkt}"
 
 
 class Produkt(models.Model):
@@ -24,4 +24,10 @@ class Produkt(models.Model):
     recenze = models.TextField(blank=True, default="")
 
     def __str__(self):
-        return f"Produkt <{self.id}> {self.jmeno} {self.popis} {self.obrazek} {self.cena} {self.barva} {self.velikost} {self.recenze}"
+        return f"Produkt {self.jmeno} {self.popis} {self.obrazek} {self.cena} {self.barva} {self.velikost} {self.recenze}"
+    
+class Genre(models.Model):
+    jmeno = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.name

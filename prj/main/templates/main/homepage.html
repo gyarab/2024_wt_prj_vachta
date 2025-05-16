@@ -1,14 +1,65 @@
 {% extends 'main/base.html' %}
 
+{% block 'title' %}Produkty | {{ block.super }}{% endblock %}
+
 {% block content %}
+      <h1>Produkty</h1>
 
-{% for boty in boty%}
-<h2>
-  {{boty.title}}
-  <h2>
-{% emptz %}
-<p>Žádné boty</p>
-{% endfor %}
-
+      <div class="row">
+        <form method="get" action="./">
+        <div class="input-group mb-3">
+            <input
+              type="text"
+              name="search"
+              value="{{ request.GET.search }}"
+              class="form-control"
+              placeholder="..."
+              aria-label="Hledat"
+              aria-describedby="button-addon2"
+            >
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Hledat</button>
+        </div>
+        </form>
+    </div>
     
+    <div class="row">
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a class="btn {% if not genre %}btn-primary{% else %}btn-outline-secondary{% endif %}" href="./">All</a>
+            </li>
+            {% for g in genres %}
+            <li class="list-inline-item">
+                <a class="btn {% if g.name == genre %}btn-primary{% else %}btn-outline-secondary{% endif %}" href="./?genre={{ g.name }}">{{ g.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="row row-cols-1  row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2">
+    {% for produkt in Produkty %}
+        <div class="col">
+            <div class="card h-100" style="cursor: pointer;" onclick="location.href='{% url 'produkt' produkt.id %}'">
+                <img class="card-img-top" src="{% if movie.main_picture %}{{movie.main_picture}}{% else %}//place-hold.it/200x250/{% endif %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{produkt.jmeno}} ({{ produkt.rok}})</h5>
+                    {% if movie.director %}<h6>{{ movie.director}}</h6>{% endif %}
+                    
+                    {% for genre in produkt.genres.all %}
+                    <span class="badge bg-primary">{{genre.jmeno}}</span>
+                    {% endfor %}
+    
+                    <p class="card-text ">{{ produkt.popis|truncatewords_html:10 }}</p>
+                </div>
+                <div class="card-footer text-end">
+                    <a href="{% url 'produkt' produkt.id %}" class="btn btn-outline-primary">Detaily</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>
+          Boty které hledáte nebyli nalezeny.😢
+        </p>
+    {% endfor %}
+    </div>
+
 {% endblock %}
