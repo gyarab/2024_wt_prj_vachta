@@ -5,7 +5,7 @@ class ObjednavkaAdmin(admin.ModelAdmin):
     list_display = ["id", "jmeno", "rok","produkt"]
     
 class ProduktAdmin(admin.ModelAdmin):
-    list_display = ["id", "jmeno", "obrazek", "cena", "barva", "velikost", "recenze"]
+    list_display = ('jmeno', 'popis', 'obrazek', 'cena', 'barva', 'velikost', 'kategorie')
     
 class GenreAdmin(admin.ModelAdmin):
     pass

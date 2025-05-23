@@ -13,18 +13,21 @@ class VKosiku(models.Model):
 
 
 class Produkt(models.Model):
+    KATEGORIE_VOLBY = [
+        ('detske', 'Dětské'),
+        ('damske', 'Dámské'),
+        ('panske', 'Pánské'),
+    ]
     jmeno = models.CharField(max_length=300)
     popis = models.TextField(blank=True, default="")
-    obrazek = models.ImageField(
-        upload_to='produkty/', blank=True, null=True
-    )
+    obrazek = models.ImageField(upload_to='produkty/', blank=True, null=True)
     cena = models.DecimalField(max_digits=10, decimal_places=2)
     barva = models.CharField(max_length=100, blank=True)
     velikost = models.CharField(max_length=50, blank=True)
-    recenze = models.TextField(blank=True, default="")
+    kategorie = models.CharField(max_length=10, choices=KATEGORIE_VOLBY, default='detske')
 
     def __str__(self):
-        return f"Produkt {self.jmeno} {self.popis} {self.obrazek} {self.cena} {self.barva} {self.velikost} {self.recenze}"
+        return f"Produkt {self.jmeno} {self.popis} {self.obrazek} {self.cena} {self.barva} {self.velikost}"
     
 class Genre(models.Model):
     jmeno = models.CharField(max_length=300)
