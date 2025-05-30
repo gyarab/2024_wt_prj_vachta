@@ -1,15 +1,16 @@
 from django.db import models
 
 class VKosiku(models.Model):
-    jmeno = models.CharField(max_length=300)
-    rok = models.IntegerField(blank=True, null=True)
-    popis = models.TextField(blank=True, default="")
-    produkt = models.ForeignKey(
-        "Produkt", on_delete=models.SET_NULL, null=True
-    )
+    produkt = models.ForeignKey('Produkt', on_delete=models.CASCADE)
+    jmeno = models.CharField(max_length=300, default="Košík", blank=True)
 
-    def __str__(self):
-        return f"VKosiku {self.jmeno} {self.rok} {self.popis} {self.produkt}"
+class Objednavka(models.Model):
+    produkty = models.ManyToManyField('Produkt')
+    datum = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def cena_celkem(self):
+        return sum(produkt.cena for produkt in self.produkty.all())
 
 
 class Produkt(models.Model):

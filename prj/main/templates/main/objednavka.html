@@ -1,17 +1,20 @@
 {% extends 'main/base.html' %}
-
 {% block content %}
 <h1>Objednávky</h1>
 {% if objednavky %}
   <ul class="list-group">
-    {% for obj in objednavky %}
+    {% for objednavka in objednavky %}
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <div>
-          <strong>{{ obj.produkt.jmeno }}</strong>
-          ({{ obj.produkt.get_kategorie_display }})<br>
-          Objednávka ID: {{ obj.id }}
+          Objednávka č. {{ objednavka.id }}<br>
+          <ul>
+            {% for produkt in objednavka.produkty.all %}
+              <li>{{ produkt.jmeno }} – {{ produkt.cena }} Kč</li>
+            {% endfor %}
+          </ul>
+          <strong>Celková cena: {{ objednavka.cena_celkem }} Kč</strong>
         </div>
-        <form method="post" action="{% url 'zrusit_objednavku' obj.id %}" style="margin:0;">
+        <form method="post" action="{% url 'zrusit_objednavku' objednavka.id %}" style="margin:0;">
           {% csrf_token %}
           <button type="submit" class="btn btn-danger btn-sm">Zrušit objednávku</button>
         </form>

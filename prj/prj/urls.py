@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
+from main.views import vytvor_objednavku
 from django.conf.urls.static import static
 from main.views import zrusit_objednavku
+from main.views import get_vkosiku
 from main.views import (
     get_homepage,
     get_produkty,
@@ -34,6 +36,7 @@ urlpatterns = [
     path('', get_homepage, name='homepage'),
     path('vkosiku/', get_vkosiku, name='vkosiku'),
     path('obednavky/', get_obednavky, name='obednavky'),
+    path('vytvor_objednavku/', vytvor_objednavku, name='vytvor_objednavku'),
     path('zrusit_objednavku/<int:objednavka_id>/', zrusit_objednavku, name='zrusit_objednavku'),
 ]
 

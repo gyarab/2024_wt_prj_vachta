@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h1>V košíku</h1>
+{% if produkty_v_kosiku %}
+  <ul class="list-group mb-3">
+    {% for polozka in produkty_v_kosiku %}
+      <li class="list-group-item">
+        {{ polozka.produkt.jmeno }}
+      </li>
+    {% endfor %}
+  </ul>
+  <form method="post" action="{% url 'vytvor_objednavku' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Vytvořit objednávku z košíku</button>
+  </form>
+{% else %}
+  <p>Košík je prázdný.</p>
+{% endif %}
+{% endblock %}
