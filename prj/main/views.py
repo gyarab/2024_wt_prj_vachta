@@ -17,6 +17,7 @@ def get_homepage(request):
         "produkty": produkt,
         "genres": Genre.objects.all().order_by("jmeno")[:10],
         "kategorie": kategorie,
+        "kosik_pocet": VKosiku.objects.count(),
     }
     return render(request, "main/homepage.html", context)
 
@@ -36,12 +37,16 @@ def get_produkty(request, id):
     context = {
         "produkt": produkt,
         "pridano": pridano,
+        "kosik_pocet": VKosiku.objects.count(),
     }
     return render(request, "main/produkt.html", context)
 
 def get_vkosiku(request):
     produkty_v_kosiku = VKosiku.objects.all()
-    context = {"produkty_v_kosiku": produkty_v_kosiku}
+    context = {
+        "produkty_v_kosiku": produkty_v_kosiku,
+        "kosik_pocet": VKosiku.objects.count(),
+    }
     return render(request, 'main/vkosiku.html', context)
 
 def vytvor_objednavku(request):
@@ -57,7 +62,10 @@ def vytvor_objednavku(request):
 
 def get_obednavky(request):
     objednavky = Objednavka.objects.all().order_by('-id')
-    context = {"objednavky": objednavky}
+    context = {
+        "objednavky": objednavky,
+        "kosik_pocet": VKosiku.objects.count(),
+    }
     return render(request, "main/objednavka.html", context)
 
 def zrusit_objednavku(request, objednavka_id):

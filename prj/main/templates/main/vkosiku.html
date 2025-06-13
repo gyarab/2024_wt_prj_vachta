@@ -1,6 +1,9 @@
 {% extends 'main/base.html' %}
 {% block content %}
-<h1>V košíku</h1>
+<h1>
+  V košíku
+  <span class="badge bg-primary">{{ kosik_pocet }}</span>
+</h1>
 {% if produkty_v_kosiku %}
   <ul class="list-group mb-3">
     {% for polozka in produkty_v_kosiku %}
