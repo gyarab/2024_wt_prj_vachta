@@ -1,5 +1,6 @@
 # SPORTOVNÍ OBUV
 *Autor: Oliver Vachta <a href="oliver.vachta.s@gyarab.cz">oliver.vachta.s@gyarab.cz</a>*
+
 **Obchod sportovní obuvy - <a href="https://ov.gawt.dtcloud.cz">https://ov.gawt.dtcloud.cz</a>**
 
 **Ročníkový projekt z předmětu webové technologie ve šk. roce 2024/2025.**
